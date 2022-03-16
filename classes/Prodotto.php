@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/Prodotto.php';
+
 class Prodotto {
     public $nome;
     public $prezzo;
@@ -12,5 +14,3 @@ class Prodotto {
         $this->target = $_target;
     }
 }
-
-echo "ciao";
