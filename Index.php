@@ -34,6 +34,7 @@ $user_01 = new User ("valid",true);
 $user_02 = new User ("valid",false);
 $user_03 = new User ("expired",false);
 
+
 echo $user_01->purchase() . '<br/>';
 echo $user_02->purchase() . '<br/>';
 echo $user_03->purchase() . '<br/>';
