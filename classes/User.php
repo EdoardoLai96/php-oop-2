@@ -10,17 +10,14 @@
         $this->registered = $_registered;
     }
 
-    public function purchase($payment = "failed"){
+    public function purchase(){
         if($this->credit_card_state == "valid" && $this->registered == true){
             $this->discount = 20;
-            $payment == "successed";
             return "Ordine eseguito con successo, sconto applicato";
         }else if($this->credit_card_state == "valid" && $this->registered == false){
             $this->discount = 0;
-            $payment == "successed";
             return "Ordine eseguito con successo";
         }else if($this->credit_card_state == "expired"){
-            $payment == "failed";
             return "Impossibile eseguire l'ordine, verifca metodo di pagamento";
         }
     }
