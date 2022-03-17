@@ -3,6 +3,7 @@ require_once __DIR__ . '/classes/Cuccia.php';
 require_once __DIR__ . '/classes/Cibo.php';
 require_once __DIR__ . '/classes/Gioco.php';
 require_once __DIR__ . '/classes/User.php';
+require_once __DIR__ . '/classes/CreditCard.php';
 
 
 
@@ -30,13 +31,17 @@ $tiragraffi = new Gioco("Tira graffi",20,"Gatti");
 
 //SEZIONE UTENTI
 
-$user_01 = new User ("valid",true);
-$user_02 = new User ("valid",false);
-$user_03 = new User ("expired",false);
-
-echo $user_01->purchase() . '<br/>';
-echo $user_02->purchase() . '<br/>';
-echo $user_03->purchase() . '<br/>';
+$user_01 = new User ("Mario","Rossi","mario.rossi@gmail.com");
+$user_02 = new User ("Luca","Bianchi","luca.bianchi@gmail.com");
+$user_03 = new User ("Carlo","Verdi","carlo.verdi@gmail.com");
 
 
+$card_01 = new CreditCard(4,22,323);
 
+  
+  try{
+      echo $card_01->isExpired();
+  }catch(Exception $e){
+    echo "Error! " .  $e->getMessage();
+  }
+ ?>

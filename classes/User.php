@@ -1,24 +1,44 @@
 <?php
  class User {
 
-    public $credit_card_state;
-    public $discount;
-    public $registered = false;
+    public $name;
+    public $lastName;
+    public $email;
+    protected $discount = 0;
+    protected $creditCard;
 
-    public function __construct($_credit_card_state, $_registered){
-        $this->credit_card_state = $_credit_card_state;
-        $this->registered = $_registered;
-    }
 
-    public function purchase(){
-        if($this->credit_card_state == "valid" && $this->registered == true){
-            $this->discount = 20;
-            return "Ordine eseguito con successo, sconto applicato";
-        }else if($this->credit_card_state == "valid" && $this->registered == false){
-            $this->discount = 0;
-            return "Ordine eseguito con successo";
-        }else if($this->credit_card_state == "expired"){
-            return "Impossibile eseguire l'ordine, verifca metodo di pagamento";
-        }
-    }
+      public function __construct($name, $lastName, $email){
+          $this->name = $name;
+          $this->lastName = $lastName;
+          $this->setEmail($email);
+      }
+
+
+        // INSERISCO VERIFICA PERCHÈ VENGA SCELTA UN'EMAIL VALIDA, TRAMITE UN METODO SET PUBBLICO
+        //PER POTER ACCEDERE A UN ATTRIBUTO PROTETTO
+
+      public function setEmail($email){
+          if(strpos($email,"@") === false && strpos($email,".") === false){
+              throw new Exception("Email inserita non valida");
+            }else{
+                $this->email = $email;
+                return true;
+            }
+      }
+
+
+
+      public function getEmail(){
+          return $this->email;
+      }
+
+
+    // METODO PER IMPOSTARE LA CREDIT CARD DELL'UTENTE NELL'INDEX, (CREDIT CARD GESTITA IN ALTRA CLASSE)
+
+
+      public function setCreditcard($creditCard){
+          $this->creditCard = $creditCard;
+      }
+
  }
